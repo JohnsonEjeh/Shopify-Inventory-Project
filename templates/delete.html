@@ -1,0 +1,28 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% include 'inc/header.html' %}
+
+<div class="content">
+    <tr>
+{% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+         <p>{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+        </tr>
+    <tr>
+    <div class="content p-3">
+<a href="{{ url_for('undelete', deleted_name=deleted_name,
+                            deleted_description=deleted_description,
+                           deleted_location=deleted_location, deleted_amount=deleted_amount,
+                           deleted_data_sheet=deleted_data_sheet, deleted_entry_date=deleted_entry_date,
+                           deleted_updated_date=deleted_updated_date,
+                           deleted_remark=deleted_remark) }}" methods="POST" class="button delete-button">Undelete</a>
+</div>
+</tr>
+</div>
+
+
+{% include 'inc/footer.html' %}

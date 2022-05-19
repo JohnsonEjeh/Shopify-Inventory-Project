@@ -1,0 +1,43 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% include 'inc/header.html' %}
+
+
+<main class="flex-shrink-0">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped">
+                    <tr>
+                        {% for column_head in column_header %}
+                        <th>{{ column_head }}</th>
+                        {% endfor %}
+                    </tr>
+                    {% for row in table_components %}
+                    <tr>
+                        <td> {{ row.name }}</td>
+                        <td> {{ row.description }}</td>
+                        <td> {{ row.location }}</td>
+                        <td> {{ row.amount }}</td>
+                        <td> {{ row.data_sheet }}</td>
+                        <td> {{ row.entry_date }}</td>
+                        <td> {{ row.updated_date }}</td>
+                        <td> {{ row.remark }}</td>
+                        <td>
+                            <a href="{{ url_for('edit', id=row.id) }}" class="button">Update</a>
+                        <td>
+                            <a href="{{ url_for('delete', id=row.id) }}" class="button delete-button">Delete</a>
+                        </td>
+                        </td>
+                    </tr>
+
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+{% include 'inc/footer.html' %}
